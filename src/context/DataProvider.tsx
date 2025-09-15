@@ -8,6 +8,10 @@ import {
 } from "react";
 
 interface DataContextType {
+  contaminant: string;
+  setContaminant: Dispatch<SetStateAction<string>>;
+  product: string;
+  setProduct: Dispatch<SetStateAction<string>>;
   countryCode: string;
   setCountryCode: Dispatch<SetStateAction<string>>;
   feedconversionID: number;
@@ -21,10 +25,13 @@ interface Props {
 }
 
 export const DataProvider = ({ children }: Props) => {
+
+  const [contaminant, setContaminant] = useState("");
+  const [product, setProduct] = useState("");
+  const [feedconversionID, setFeedconversionID] = useState(0);
+
   // set state variable that holds country and function to update country
   const [countryCode, setCountryCode] = useState("");
-
-  const [feedconversionID, setFeedconversionID] = useState(0);
 
   // theming
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
@@ -33,6 +40,10 @@ export const DataProvider = ({ children }: Props) => {
   return (
     <DataContext.Provider
       value={{
+        contaminant,
+        setContaminant,
+        product,
+        setProduct,
         countryCode,
         setCountryCode,
         feedconversionID,

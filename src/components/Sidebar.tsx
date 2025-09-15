@@ -12,6 +12,8 @@ import {
 import MailIcon from "@mui/icons-material/Mail";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import CountrySelect from "./CountrySelect";
+import ProductSelect from "./ProductSelect";
+import ContaminantSelect from "./ContaminantSelect";
 
 export const drawerWidth = 240;
 
@@ -36,6 +38,8 @@ const Sidebar = ({
       <Toolbar />
       <Divider />
       <CountrySelect />
+      <ProductSelect />
+      <ContaminantSelect />
       <Divider />
       <List>
         {["Button 1", "Button 2", "Button 3"].map((text, index) => (
