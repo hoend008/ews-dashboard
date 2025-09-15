@@ -25,8 +25,9 @@ const getSampleCountryMap = async (
     },
   });
 
-  const mapData = createMapData(geodata, data);
-  return { data, mapData };
+  //const mapData = createMapData(geodata, data);
+  //return { data, mapData };
+  return data;
 };
 
 export default getSampleCountryMap;

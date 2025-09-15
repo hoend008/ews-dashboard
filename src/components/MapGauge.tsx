@@ -10,6 +10,7 @@ import useTheme from "../hooks/useTheme";
 import { themeSettings } from "../themes/theme";
 import { defaultDiv, extraDiv } from "../styles/pendingErrorDiv";
 import useData from "../hooks/useData";
+import createMapData from "../hooks/useGeoDensityData";
 
 export interface chartMainColor {
   color: string;
@@ -74,7 +75,7 @@ const MapGauge = () => {
         }}
       >
         <MyMap
-          mapData={data.mapData}
+          mapData={createMapData(geodata, data)}
           error={error}
           isPending={isPending}
           isSuccess={isSuccess}
@@ -82,7 +83,8 @@ const MapGauge = () => {
         />
         <Box sx={{ margin: "auto" }}>
           <GaugeChart
-            data={data.data}
+            //data={data.data}
+            data={data}
             error={error}
             isPending={isPending}
             isSuccess={isSuccess}

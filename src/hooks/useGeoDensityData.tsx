@@ -1,4 +1,3 @@
-
 const createMapData = (geodata: any, densityData: any) => {
   // loop over geodata.features
   for (const key in geodata.features) {
