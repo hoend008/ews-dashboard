@@ -4,13 +4,13 @@ import { GeoJsonObject } from "geojson";
 
 export default function createSampleCountryMapQueryOptions(
   accessToken: string,
-  geodata: GeoJsonObject,
+  product: string,
+  contaminant: string,
+  geodata: GeoJsonObject
 ) {
   return queryOptions({
-    queryKey: ["samplecountrymap"],
-    queryFn: () => getSampleCountryMap(accessToken, geodata),
+    queryKey: ["samplecountrymap", product, contaminant],
+    queryFn: () => getSampleCountryMap(accessToken, product, contaminant, geodata),
     staleTime: 2 * 60 * 1000, // 2 minutes
   });
 }
-
-

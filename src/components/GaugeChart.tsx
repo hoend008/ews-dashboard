@@ -3,7 +3,6 @@ import { Typography } from "@mui/material";
 import useData from "../hooks/useData";
 import { SampleCountry } from "../api/queries/getSampleCountryMap";
 import { chartMainColor } from "./MapGauge";
-import { useCallback, useEffect, useReducer, useState } from "react";
 import useTheme from "../hooks/useTheme";
 import { themeSettings } from "../themes/theme";
 import { defaultDiv, extraDiv } from "../styles/pendingErrorDiv";

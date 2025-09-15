@@ -9,6 +9,7 @@ import geodata from "../data/countries_WH.json";
 import useTheme from "../hooks/useTheme";
 import { themeSettings } from "../themes/theme";
 import { defaultDiv, extraDiv } from "../styles/pendingErrorDiv";
+import useData from "../hooks/useData";
 
 export interface chartMainColor {
   color: string;
@@ -24,10 +25,14 @@ const MapGauge = () => {
   // get user authentication data
   const { auth } = useAuth();
 
+  const { product, contaminant } = useData();
+
   // get map density data
   const { data, error, isPending, isSuccess } = useQuery(
     createSampleCountryMapQueryOptions(
       auth.accessToken,
+      product,
+      contaminant,
       geodata as GeoJsonObject
     )
   );

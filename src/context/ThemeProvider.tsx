@@ -23,7 +23,6 @@ interface Props {
 }
 
 export const ThemeProvider = ({ children }: Props) => {
-
   // theming
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const [mode, setMode] = useState(prefersDarkMode);
@@ -39,10 +38,8 @@ export const ThemeProvider = ({ children }: Props) => {
   const [accentColor, setAccentColor] = useState("green");
 
   const handleAccentColor = (e: SelectChangeEvent) => {
-    console.log(e.target.value);
     setAccentColor(e.target.value);
   };
-
 
   return (
     <ThemeContext.Provider
@@ -52,7 +49,7 @@ export const ThemeProvider = ({ children }: Props) => {
         prefersDarkMode,
         handleChange,
         accentColor,
-        handleAccentColor
+        handleAccentColor,
       }}
     >
       {children}
