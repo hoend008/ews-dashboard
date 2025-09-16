@@ -147,7 +147,6 @@ const MyMap = ({ data, error, isPending, isSuccess, mapColors }: Props) => {
 
   return (
     <div>
-      (
       <MapContainer
         style={{ height: "50vh", width: "50vw" }}
         zoom={1}
@@ -171,7 +170,6 @@ const MyMap = ({ data, error, isPending, isSuccess, mapColors }: Props) => {
           )}
         </div>
       </MapContainer>
-      )
     </div>
   );
 };

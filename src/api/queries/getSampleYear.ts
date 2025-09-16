@@ -7,7 +7,7 @@ export interface SampleYear {
 const getSampleYear = async (
   accessToken: string,
   country_code: string,
-  feedconversionID: number,
+  product: string,
 ) => {
   const controller = new AbortController();
   const { data } = await axios<SampleYear[]>({
@@ -17,7 +17,7 @@ const getSampleYear = async (
     headers: { Authorization: "Bearer " + accessToken },
     params: {
       iso_a3: country_code ? country_code : null,
-      feedconversion_id: feedconversionID
+      product: product ? product : null,
     },
   });
 

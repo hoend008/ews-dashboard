@@ -10,16 +10,7 @@ import usePrevious from "react-use-previous";
 import createSampleProductQueryOptions from "../api/queryOptions/sampleProductQueryOptions";
 import { defaultDiv, extraDiv } from "../styles/pendingErrorDiv";
 
-const data01 = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 },
-  { name: "Group E", value: 278 },
-  { name: "Group F", value: 189 },
-];
-
-const PiechartRecharts = () => {
+const PiechartSampleProducts = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
   const previousIndex = usePrevious(activeIndex);
 
@@ -27,7 +18,7 @@ const PiechartRecharts = () => {
   const { auth } = useAuth();
 
   // get country info
-  const { countryCode, setFeedconversionID } = useData();
+  const { countryCode, setProduct } = useData();
 
   // get sample year data
   const { data, error, isPending } = useQuery(
@@ -60,10 +51,10 @@ const PiechartRecharts = () => {
   const handleClick = (data: any, index: any) => {
     if (index === previousIndex.current) {
       setActiveIndex(-1);
-      setFeedconversionID(0);
+      setProduct("");
     } else {
       setActiveIndex(index);
-      setFeedconversionID(data.feedconversion_id);
+      setProduct(data.product);
     }
   };
 
@@ -72,7 +63,7 @@ const PiechartRecharts = () => {
       <PieChart width={400} height={400}>
         <Pie
           dataKey="count"
-          nameKey="productname"
+          nameKey="product"
           isAnimationActive={false}
           data={data}
           cx="50%"
@@ -97,4 +88,4 @@ const PiechartRecharts = () => {
   );
 };
 
-export default PiechartRecharts;
+export default PiechartSampleProducts;

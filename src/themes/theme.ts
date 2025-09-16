@@ -188,7 +188,7 @@ export const themeSettings = (mode: boolean, themeColor: string) => {
         },
         mapColors: themeColor == "green" ? MAPCOLORS_GREEN : MAPCOLORS_RED,
         //mapColorsGreen: MAPCOLORS_GREEN,
-        //mapColorsRed: MAPCOLORS_RED,
+        //mapColorsRed: MAPCOLORS_RED, 
       }
     : {
         primary: {

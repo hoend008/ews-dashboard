@@ -1,10 +1,8 @@
 import { Box, Card, Grid, Toolbar, Typography } from "@mui/material";
 import { drawerWidth } from "../components/Layout";
-import BarchartYear from "../components/BarchartYear";
-import BarchartYearApex from "../components/BarchartYearApex";
 import MapGauge from "../components/MapGauge";
-import BarchartYearRecharts from "../components/BarchartYearRecharts";
-import PiechartRecharts from "../components/PIechartRecharts";
+import BarchartSampleYears from "../components/BarchartSampleYears";
+import PiechartSampleProducts from "../components/PiechartSampleProducts";
 
 const Home = () => {
   return (
@@ -23,10 +21,10 @@ const Home = () => {
         <Grid container spacing={3}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography variant="h4" sx={{ color: "text.main" }}>
-              Nivo Chart
+              Samples per year
             </Typography>
             <Typography sx={{ color: "text.secondary" }}>
-              Some text on the graph here
+              Number of samples per year
             </Typography>
             <Card
               sx={{
@@ -36,15 +34,15 @@ const Home = () => {
                 borderRadius: "0.6rem",
               }}
             >
-              <BarchartYear />
+              <BarchartSampleYears />
             </Card>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography variant="h4" sx={{ color: "text.main" }}>
-              Apex Chart
+              Samples: Top 3 products
             </Typography>
             <Typography sx={{ color: "text.secondary" }}>
-              Some text on the graph here
+              The top 3 products based on the number of samples
             </Typography>
             <Card
               sx={{
@@ -54,49 +52,9 @@ const Home = () => {
                 borderRadius: "0.6rem",
               }}
             >
-              <BarchartYearApex />
+              <PiechartSampleProducts />
             </Card>
           </Grid>
-        </Grid>
-
-        <Grid container spacing={3}>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Typography variant="h4" sx={{ color: "text.main" }}>
-              ReCharts
-            </Typography>
-            <Typography sx={{ color: "text.secondary" }}>
-              Some text on the graph here
-            </Typography>
-            <Card
-              sx={{
-                backgroundColor: "secondary.main",
-                border: 1,
-                borderColor: "border.main",
-                borderRadius: "0.6rem",
-              }}
-            >
-              <BarchartYearRecharts />
-            </Card>
-          </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Typography variant="h4" sx={{ color: "text.main" }}>
-              Piechart ReCharts
-            </Typography>
-            <Typography sx={{ color: "text.secondary" }}>
-              Some text on the graph here
-            </Typography>
-            <Card
-              sx={{
-                backgroundColor: "secondary.main",
-                border: 1,
-                borderColor: "border.main",
-                borderRadius: "0.6rem",
-              }}
-            >
-              <PiechartRecharts />
-            </Card>
-          </Grid>
-          
         </Grid>
       </Grid>
     </Box>

@@ -4,11 +4,11 @@ import getSampleYear from "../queries/getSampleYear";
 export default function createSampleYearQueryOptions(
   accessToken: string,
   countryID: string,
-  feedconversionID: number,
+  product: string
 ) {
   return queryOptions({
-    queryKey: ["sampleyear", countryID, feedconversionID],
-    queryFn: () => getSampleYear(accessToken, countryID, feedconversionID),
+    queryKey: ["sampleyear", countryID, product],
+    queryFn: () => getSampleYear(accessToken, countryID, product),
     staleTime: 2 * 60 * 1000, // 2 minutes
   });
 }

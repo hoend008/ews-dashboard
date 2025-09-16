@@ -68,7 +68,7 @@ const GaugeChart = ({
           value={getValue(countryCode)}
           minValue={0}
           maxValue={mapColors.reduce((a, b) => Math.max(a, b.max), -Infinity)}
-          textColor={themeColors.text.main}
+          textColor={themeColors.accent.main}
           labelFontSize={"14px"}
           valueTextFontSize={"32px"}
           forceRender={false}

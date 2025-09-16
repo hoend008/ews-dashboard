@@ -19,19 +19,19 @@ import useTheme from "../hooks/useTheme";
 import { themeSettings } from "../themes/theme";
 import { defaultDiv, extraDiv } from "../styles/pendingErrorDiv";
 
-const BarchartYearRecharts = () => {
+const BarchartSampleYears = () => {
   // get user authentication data
   const { auth } = useAuth();
 
   // get country info
-  const { countryCode, feedconversionID } = useData();
+  const { countryCode, product } = useData();
 
   // get sample year data
   const { data, error, isPending } = useQuery(
     createSampleYearQueryOptions(
       auth.accessToken,
       countryCode,
-      feedconversionID
+      product
     )
   );
 
@@ -104,4 +104,4 @@ const BarchartYearRecharts = () => {
   );
 };
 
-export default BarchartYearRecharts;
+export default BarchartSampleYears;
