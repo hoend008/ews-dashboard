@@ -1,6 +1,4 @@
 import axios from "axios";
-import { GeoJsonObject } from "geojson";
-import createMapData from "../../hooks/useGeoDensityData";
 
 export interface SampleCountry {
   iso_a3: string;
@@ -11,7 +9,6 @@ const getSampleCountryMap = async (
   accessToken: string,
   product: string,
   contaminant: string,
-  geodata: GeoJsonObject
 ) => {
   const controller = new AbortController();
   const { data } = await axios<SampleCountry[]>({

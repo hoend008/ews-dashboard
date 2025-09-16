@@ -13,19 +13,23 @@ import { CircularProgress, Typography } from "@mui/material";
 import { chartMainColor } from "../MapGauge";
 import { mapPolygonColorToDensity } from "./ColorUtils";
 import { defaultDiv, extraDiv } from "../../styles/pendingErrorDiv";
+import createMapData from "../../hooks/useGeoDensityData";
+import geodata from "../../data/countries_WH.json";
+import { SampleCountry } from "../../api/queries/getSampleCountryMap";
 
 const COLOR_SELECT = "yellow";
 const WEIGHT_SELECT = 2;
 
 interface Props {
-  mapData: GeoJsonObject;
+  //mapData: GeoJsonObject;
+  data: SampleCountry[];
   error: Error | null;
   isPending: boolean;
   isSuccess: boolean;
   mapColors: chartMainColor[];
 }
 
-const MyMap = ({ mapData, error, isPending, isSuccess, mapColors }: Props) => {
+const MyMap = ({ data, error, isPending, isSuccess, mapColors }: Props) => {
   const { countryCode, setCountryCode } = useData();
 
   const geoJsonRef = useRef(null);
@@ -143,30 +147,31 @@ const MyMap = ({ mapData, error, isPending, isSuccess, mapColors }: Props) => {
 
   return (
     <div>
-      {isSuccess ? (
-        <MapContainer
-          style={{ height: "50vh", width: "50vw" }}
-          zoom={1}
-          center={[35, 20]}
-        >
-          <GeoJSON
-            data={mapData as GeoJsonObject}
-            style={style}
-            onEachFeature={onEachCountry}
-            ref={geoJsonRef}
-          />
-          <div style={{ position: "absolute", top: 5, right: 5, zIndex: 1000 }}>
-            <Legend mapColors={mapColors} />
-          </div>
-          <div style={{ position: "absolute", bottom: 0, zIndex: 1000 }}>
-            {hoveredFeature ? (
-              <MapInfoBox selectedFeature={hoveredFeature} />
-            ) : (
-              <MapInfoBox selectedFeature={{ density: "", name: "" }} />
-            )}
-          </div>
-        </MapContainer>
-      ) : null}
+      (
+      <MapContainer
+        style={{ height: "50vh", width: "50vw" }}
+        zoom={1}
+        center={[35, 20]}
+      >
+        <GeoJSON
+          key={JSON.stringify(data)}
+          data={createMapData(geodata, data) as GeoJsonObject}
+          style={style}
+          onEachFeature={onEachCountry}
+          ref={geoJsonRef}
+        />
+        <div style={{ position: "absolute", top: 5, right: 5, zIndex: 1000 }}>
+          <Legend mapColors={mapColors} />
+        </div>
+        <div style={{ position: "absolute", bottom: 0, zIndex: 1000 }}>
+          {hoveredFeature ? (
+            <MapInfoBox selectedFeature={hoveredFeature} />
+          ) : (
+            <MapInfoBox selectedFeature={{ density: "", name: "" }} />
+          )}
+        </div>
+      </MapContainer>
+      )
     </div>
   );
 };

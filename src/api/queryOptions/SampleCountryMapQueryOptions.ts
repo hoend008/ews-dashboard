@@ -6,11 +6,10 @@ export default function createSampleCountryMapQueryOptions(
   accessToken: string,
   product: string,
   contaminant: string,
-  geodata: GeoJsonObject
 ) {
   return queryOptions({
     queryKey: ["samplecountrymap", product, contaminant],
-    queryFn: () => getSampleCountryMap(accessToken, product, contaminant, geodata),
+    queryFn: () => getSampleCountryMap(accessToken, product, contaminant),
     staleTime: 2 * 60 * 1000, // 2 minutes
   });
 }

@@ -2,15 +2,12 @@ import { Box, Card, CircularProgress, Grid, Typography } from "@mui/material";
 import MyMap from "./map/MyMap";
 import GaugeChart from "./GaugeChart";
 import { useQuery } from "@tanstack/react-query";
-import { GeoJsonObject } from "geojson";
 import useAuth from "../hooks/useAuth";
 import createSampleCountryMapQueryOptions from "../api/queryOptions/SampleCountryMapQueryOptions";
-import geodata from "../data/countries_WH.json";
 import useTheme from "../hooks/useTheme";
 import { themeSettings } from "../themes/theme";
 import { defaultDiv, extraDiv } from "../styles/pendingErrorDiv";
 import useData from "../hooks/useData";
-import createMapData from "../hooks/useGeoDensityData";
 
 export interface chartMainColor {
   color: string;
@@ -34,7 +31,6 @@ const MapGauge = () => {
       auth.accessToken,
       product,
       contaminant,
-      geodata as GeoJsonObject
     )
   );
 
@@ -75,7 +71,7 @@ const MapGauge = () => {
         }}
       >
         <MyMap
-          mapData={createMapData(geodata, data)}
+          data={data}
           error={error}
           isPending={isPending}
           isSuccess={isSuccess}
