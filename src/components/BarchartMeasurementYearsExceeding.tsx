@@ -9,6 +9,9 @@ import {
   XAxis,
   YAxis,
   Tooltip,
+  AreaChart,
+  Area,
+  Text,
 } from "recharts";
 import useAuth from "../hooks/useAuth";
 import useData from "../hooks/useData";
@@ -63,7 +66,7 @@ const BarchartMeasurementYearsExceeding = () => {
   return (
     <div style={{ width: "100%" }}>
       <ResponsiveContainer width="100%" height={300}>
-        <BarChart
+        <AreaChart
           width={150}
           height={40}
           data={data}
@@ -79,20 +82,18 @@ const BarchartMeasurementYearsExceeding = () => {
             dataKey="year"
             tick={{ fontSize: 12, fill: themeColors.text.main }}
           />
-          <YAxis tick={{ fontSize: 12, fill: themeColors.text.main }} />
+          <YAxis
+            label={{ value: "Percentage", angle: -90, position: "center", dx: -20 }}
+            tick={{ fontSize: 12, fill: themeColors.text.main }}
+          />
           <Tooltip />
-          <Bar dataKey="gtloq_perc" onClick={handleClick}>
-            {data.map((entry, index) => (
-              <Cell
-                cursor="pointer"
-                fill={
-                  index === activeIndex ? "#82ca9d" : themeColors.accent.main
-                }
-                key={`cell-${index}`}
-              />
-            ))}
-          </Bar>
-        </BarChart>
+          <Area
+            type="monotone"
+            dataKey="gtloq_perc"
+            stroke={themeColors.accent.main}
+            fill={themeColors.accent.main}
+          />
+        </AreaChart>
       </ResponsiveContainer>
     </div>
   );
