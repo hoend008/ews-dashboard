@@ -64,8 +64,8 @@ const Navbar = ({ handleDrawerToggle }: Props) => {
             <MenuIcon fontSize="large" sx={{ color: "text.main" }} />
           </IconButton>
         </Box>
-        <Typography variant="h6" sx={{ color: "text.main" }}>
-          Title
+        <Typography variant="h4" sx={{ color: "text.main" }}>
+          EWS Mycotoxin Dashboard 
         </Typography>
         <Box sx={{ display: "flex" }}>
           <IconButton onClick={handleChange}>

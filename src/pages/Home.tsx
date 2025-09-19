@@ -1,8 +1,9 @@
 import { Box, Card, Grid, Toolbar, Typography } from "@mui/material";
 import { drawerWidth } from "../components/Layout";
 import MapGauge from "../components/MapGauge";
-import BarchartSampleYears from "../components/BarchartSampleYears";
 import PiechartSampleProducts from "../components/PiechartSampleProducts";
+import BarchartMeasurementYears from "../components/BarchartMeasurementYears";
+import BarchartMeasurementYearsExceeding from "../components/BarchartMeasurementYearsExceeding";
 
 const Home = () => {
   return (
@@ -21,10 +22,10 @@ const Home = () => {
         <Grid container spacing={3}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography variant="h4" sx={{ color: "text.main" }}>
-              Samples per year
+              Measurements per year
             </Typography>
             <Typography sx={{ color: "text.secondary" }}>
-              Number of samples per year
+              Number of measurements per year
             </Typography>
             <Card
               sx={{
@@ -34,7 +35,45 @@ const Home = () => {
                 borderRadius: "0.6rem",
               }}
             >
-              <BarchartSampleYears />
+              <BarchartMeasurementYears />
+            </Card>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Typography variant="h4" sx={{ color: "text.main" }}>
+              Measurements: % Greater than LOQ
+            </Typography>
+            <Typography sx={{ color: "text.secondary" }}>
+              Percentage of measurements with concentrations greater than LOQ per year
+            </Typography>
+            <Card
+              sx={{
+                backgroundColor: "secondary.main",
+                border: 1,
+                borderColor: "border.main",
+                borderRadius: "0.6rem",
+              }}
+            >
+              <BarchartMeasurementYearsExceeding />
+            </Card>
+          </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Typography variant="h4" sx={{ color: "text.main" }}>
+              Measurements per year
+            </Typography>
+            <Typography sx={{ color: "text.secondary" }}>
+              Number of measurements per year
+            </Typography>
+            <Card
+              sx={{
+                backgroundColor: "secondary.main",
+                border: 1,
+                borderColor: "border.main",
+                borderRadius: "0.6rem",
+              }}
+            >
+              <BarchartMeasurementYears />
             </Card>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>

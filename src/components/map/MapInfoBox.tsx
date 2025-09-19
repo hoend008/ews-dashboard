@@ -15,7 +15,7 @@ const MapInfoBox = ({ selectedFeature }: Props) => {
 
   return (
     <div className={"MapInfoBox"}>
-      <h2 style={{ margin: "0 0 5px" }}>Nr of Samples</h2>
+      <h2 style={{ margin: "0 0 5px" }}>Prediction</h2>
       <div
         style={{
           display: "flex",
