@@ -123,6 +123,9 @@ export const tokens = (mode: boolean) => ({
 export const themeSettings = (mode: boolean, themeColor: string) => {
   const colors = tokens(mode);
 
+  const AccentMain = "#5ea500";
+  const AccentSecondary = "#fb6a4a";
+
   const greenGradient = [
     "#5EA500",
     "#6AB61E",
@@ -167,7 +170,8 @@ export const themeSettings = (mode: boolean, themeColor: string) => {
           //main: colors.greenAccent[300],
         },
         accent: {
-          main: themeColor == "green" ? "#5ea500" : "#fb6a4a",
+          main: themeColor == "green" ? AccentMain : AccentSecondary,
+          secondary: themeColor == "green" ? AccentSecondary : AccentMain,
         },
         neutral: {
           dark: colors.grey[200],
@@ -200,7 +204,8 @@ export const themeSettings = (mode: boolean, themeColor: string) => {
           main: "#F2F3F4",
         },
         accent: {
-          main: themeColor == "green" ? "#5ea500" : "#fb6a4a",
+          main: themeColor == "green" ? AccentMain : AccentSecondary,
+          secondary: themeColor == "green" ? AccentSecondary : AccentMain,
         },
         neutral: {
           dark: colors.grey[400],

@@ -1,9 +1,6 @@
 import { useState } from "react";
 import usePrevious from "react-use-previous";
 import {
-  BarChart,
-  Bar,
-  Cell,
   ResponsiveContainer,
   CartesianGrid,
   XAxis,
@@ -11,7 +8,6 @@ import {
   Tooltip,
   AreaChart,
   Area,
-  Text,
 } from "recharts";
 import useAuth from "../hooks/useAuth";
 import useData from "../hooks/useData";
@@ -22,7 +18,7 @@ import { themeSettings } from "../themes/theme";
 import { defaultDiv, extraDiv } from "../styles/pendingErrorDiv";
 import createMeasurementYearQueryOptions from "../api/queryOptions/measurementYearQueryOptions";
 
-const BarchartMeasurementYearsExceeding = () => {
+const ChartMeasurementYearsExceeding = () => {
   // get user authentication data
   const { auth } = useAuth();
 
@@ -83,8 +79,16 @@ const BarchartMeasurementYearsExceeding = () => {
             tick={{ fontSize: 12, fill: themeColors.text.main }}
           />
           <YAxis
-            label={{ value: "Percentage", angle: -90, position: "center", dx: -20 }}
+            label={{
+              value: "Percentage",
+              angle: -90,
+              position: "center",
+              dx: -20,
+            }}
             tick={{ fontSize: 12, fill: themeColors.text.main }}
+            tickFormatter={(tick) => {
+              return `${tick}%`;
+            }}
           />
           <Tooltip />
           <Area
@@ -99,4 +103,4 @@ const BarchartMeasurementYearsExceeding = () => {
   );
 };
 
-export default BarchartMeasurementYearsExceeding;
+export default ChartMeasurementYearsExceeding;

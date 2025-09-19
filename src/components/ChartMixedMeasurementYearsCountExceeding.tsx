@@ -1,14 +1,16 @@
 import { useState } from "react";
 import usePrevious from "react-use-previous";
 import {
-  BarChart,
-  Bar,
-  Cell,
   ResponsiveContainer,
   CartesianGrid,
   XAxis,
   YAxis,
   Tooltip,
+  AreaChart,
+  Area,
+  ComposedChart,
+  Bar,
+  Line,
 } from "recharts";
 import useAuth from "../hooks/useAuth";
 import useData from "../hooks/useData";
@@ -19,7 +21,7 @@ import { themeSettings } from "../themes/theme";
 import { defaultDiv, extraDiv } from "../styles/pendingErrorDiv";
 import createMeasurementYearQueryOptions from "../api/queryOptions/measurementYearQueryOptions";
 
-const BarchartMeasurementYears = () => {
+const ChartMixedMeasurementYearsCountExceeding = () => {
   // get user authentication data
   const { auth } = useAuth();
 
@@ -30,7 +32,6 @@ const BarchartMeasurementYears = () => {
   const { data, error, isPending } = useQuery(
     createMeasurementYearQueryOptions(auth.accessToken, countryCode, product)
   );
-
   const { mode, accentColor } = useTheme();
   const themeColors = themeSettings(mode, accentColor);
 
@@ -64,7 +65,7 @@ const BarchartMeasurementYears = () => {
   return (
     <div style={{ width: "100%" }}>
       <ResponsiveContainer width="100%" height={300}>
-        <BarChart
+        <ComposedChart
           width={150}
           height={40}
           data={data}
@@ -81,6 +82,12 @@ const BarchartMeasurementYears = () => {
             tick={{ fontSize: 12, fill: themeColors.text.main }}
           />
           <YAxis
+            yAxisId="left"
+            dataKey="count"
+            orientation="left"
+            type="number"
+            domain={[0, "auto"]}
+            allowDataOverflow
             label={{
               value: "Number of Measurements",
               angle: -90,
@@ -92,22 +99,42 @@ const BarchartMeasurementYears = () => {
               return tick.toLocaleString();
             }}
           />
+          <YAxis
+            yAxisId="right"
+            dataKey="gtloq_perc"
+            orientation="right"
+            type="number"
+            domain={[0, "auto"]}
+            label={{
+              value: "% Exceeding LOQ",
+              angle: -90,
+              position: "center",
+              dx: 20,
+            }}
+            tick={{ fontSize: 12, fill: themeColors.text.main }}
+            tickFormatter={(tick) => {
+              return `${tick}%`;
+            }}
+          />
+
           <Tooltip />
-          <Bar dataKey="count" onClick={handleClick}>
-            {data.map((entry, index) => (
-              <Cell
-                cursor="pointer"
-                fill={
-                  index === activeIndex ? "#82ca9d" : themeColors.accent.main
-                }
-                key={`cell-${index}`}
-              />
-            ))}
-          </Bar>
-        </BarChart>
+          <Bar
+            yAxisId="left"
+            dataKey="count"
+            barSize={20}
+            fill={themeColors.accent.main}
+          />
+          <Line
+            yAxisId="right"
+            type="monotone"
+            dataKey="gtloq_perc"
+            stroke={themeColors.accent.secondary}
+            fill={themeColors.accent.secondary}
+          />
+        </ComposedChart>
       </ResponsiveContainer>
     </div>
   );
 };
 
-export default BarchartMeasurementYears;
+export default ChartMixedMeasurementYearsCountExceeding;

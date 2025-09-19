@@ -3,7 +3,8 @@ import { drawerWidth } from "../components/Layout";
 import MapGauge from "../components/MapGauge";
 import PiechartSampleProducts from "../components/PiechartSampleProducts";
 import BarchartMeasurementYears from "../components/BarchartMeasurementYears";
-import BarchartMeasurementYearsExceeding from "../components/BarchartMeasurementYearsExceeding";
+import ChartMeasurementYearsExceeding from "../components/chartMeasurementYearsExceeding";
+import ChartMixedMeasurementYearsCountExceeding from "../components/ChartMixedMeasurementYearsCountExceeding";
 
 const Home = () => {
   return (
@@ -53,7 +54,7 @@ const Home = () => {
                 borderRadius: "0.6rem",
               }}
             >
-              <BarchartMeasurementYearsExceeding />
+              <ChartMeasurementYearsExceeding />
             </Card>
           </Grid>
         </Grid>
@@ -73,7 +74,7 @@ const Home = () => {
                 borderRadius: "0.6rem",
               }}
             >
-              <BarchartMeasurementYears />
+              <ChartMixedMeasurementYearsCountExceeding />
             </Card>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
