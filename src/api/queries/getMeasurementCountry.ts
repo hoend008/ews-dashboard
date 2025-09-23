@@ -1,7 +1,15 @@
 import axios from "axios";
 
+//export interface MeasurementCountry {
+//  [key: string]: string | number;
+//}
+
 export interface MeasurementCountry {
-  [key: string]: string | number;
+  iso_a3: string;
+  count: number;
+  rank: number;
+  gtloq: number;
+  gtloq_perc: number;
 }
 
 const getMeasurementCountry = async (

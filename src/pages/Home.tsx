@@ -43,10 +43,10 @@ const Home = () => {
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography variant="h4" sx={{ color: "text.main" }}>
-              Samples: Top 3 products
+              Countries
             </Typography>
             <Typography sx={{ color: "text.secondary" }}>
-              The top 3 products based on the number of samples
+              Countries ranked by percentage of measurements exceeding the LOQ
             </Typography>
             <Card
               sx={{
