@@ -8,6 +8,7 @@ const getMeasurementYear = async (
   accessToken: string,
   country_code: string,
   product: string,
+  contaminant: string,  
 ) => {
   const controller = new AbortController();
   const { data } = await axios<MeasurementYear[]>({
@@ -18,6 +19,7 @@ const getMeasurementYear = async (
     params: {
       iso_a3: country_code ? country_code : null,
       product: product ? product : null,
+      contaminant: contaminant ? contaminant : null,
     },
   });
 

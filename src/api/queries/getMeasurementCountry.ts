@@ -15,6 +15,7 @@ export interface MeasurementCountry {
 const getMeasurementCountry = async (
   accessToken: string,
   product: string,
+  contaminant: string,
 ) => {
   const controller = new AbortController();
   const { data } = await axios<MeasurementCountry[]>({
@@ -24,6 +25,7 @@ const getMeasurementCountry = async (
     headers: { Authorization: "Bearer " + accessToken },
     params: {
       product: product ? product : null,
+      contaminant: contaminant ? contaminant : null,
     },
   });
 

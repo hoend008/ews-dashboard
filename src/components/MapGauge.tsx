@@ -3,11 +3,11 @@ import MyMap from "./map/MyMap";
 import GaugeChart from "./GaugeChart";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../hooks/useAuth";
-import createSampleCountryMapQueryOptions from "../api/queryOptions/SampleCountryMapQueryOptions";
 import useTheme from "../hooks/useTheme";
 import { themeSettings } from "../themes/theme";
 import { defaultDiv, extraDiv } from "../styles/pendingErrorDiv";
 import useData from "../hooks/useData";
+import createPredictionCountryMapQueryOptions from "../api/queryOptions/PredictionCountryMapQueryOptions";
 
 export interface chartMainColor {
   color: string;
@@ -27,7 +27,7 @@ const MapGauge = () => {
 
   // get map density data
   const { data, error, isPending, isSuccess } = useQuery(
-    createSampleCountryMapQueryOptions(
+    createPredictionCountryMapQueryOptions(
       auth.accessToken,
       product,
       contaminant,

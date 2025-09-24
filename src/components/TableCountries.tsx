@@ -15,11 +15,11 @@ const TableCountries = () => {
   const { auth } = useAuth();
 
   // get country info
-  const { product, countryCode, setCountryCode } = useData();
+  const { product, countryCode, setCountryCode, contaminant } = useData();
 
   // get sample year data
   const { data, error, isPending } = useQuery(
-    createMeasurementCountryQueryOptions(auth.accessToken, product)
+    createMeasurementCountryQueryOptions(auth.accessToken, product, contaminant)
   );
 
   const { mode, accentColor } = useTheme();

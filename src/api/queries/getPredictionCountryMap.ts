@@ -1,19 +1,19 @@
 import axios from "axios";
 
-export interface SampleCountry {
+export interface PredictionCountry {
   iso_a3: string;
   density: number;
 }
 
-const getSampleCountryMap = async (
+const getPredictionCountryMap = async (
   accessToken: string,
   product: string,
   contaminant: string,
 ) => {
   const controller = new AbortController();
-  const { data } = await axios<SampleCountry[]>({
+  const { data } = await axios<PredictionCountry[]>({
     method: "get",
-    url: "http://127.0.0.1:8000/samples/countries",
+    url: "http://127.0.0.1:8000/predictions/countries",
     signal: controller.signal,
     headers: { Authorization: "Bearer " + accessToken },
     params: {
@@ -27,4 +27,4 @@ const getSampleCountryMap = async (
   return data;
 };
 
-export default getSampleCountryMap;
+export default getPredictionCountryMap;
