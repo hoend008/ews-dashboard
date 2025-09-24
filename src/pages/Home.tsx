@@ -1,4 +1,4 @@
-import { Box, Card, Grid, Toolbar, Typography } from "@mui/material";
+import { Box, Card, Divider, Grid, Toolbar, Typography } from "@mui/material";
 import { drawerWidth } from "../components/Layout";
 import MapGauge from "../components/MapGauge";
 import PiechartSampleProducts from "../components/PiechartSampleProducts";
@@ -6,8 +6,11 @@ import BarchartMeasurementYears from "../components/BarchartMeasurementYears";
 import ChartMixedMeasurementYearsCountExceeding from "../components/ChartMixedMeasurementYearsCountExceeding";
 import ChartMeasurementYearsExceeding from "../components/ChartMeasurementYearsExceeding";
 import TableCountries from "../components/TableCountries";
+import useData from "../hooks/useData";
 
 const Home = () => {
+  const { product, contaminant } = useData();
+   
   return (
     <Box
       sx={{
@@ -20,8 +23,24 @@ const Home = () => {
     >
       <Toolbar />
       <Grid container direction="column" spacing={2}>
+        <Typography variant="h3" align={'center'} sx={{ color: "text.main" }}>
+          Prediction Model
+        </Typography>
+        <Grid size={{ xs: 12, md: 6 }}>
+          <Typography variant="h4" sx={{ color: "text.main" }}>
+              Model Predictions World Map
+            </Typography>
+            <Typography sx={{ color: "text.secondary" }}>
+              Model Predictions per country for {product} and {contaminant}
+            </Typography>
+        </Grid>
+
         <MapGauge />
 
+        <Divider sx={{ borderBottomWidth: 3, bgcolor: "text.secondary" }} />
+        <Typography variant="h3" align={'center'} sx={{ color: "text.main" }}>
+          Data Descriptives
+        </Typography>
         <Grid container spacing={3}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography variant="h4" sx={{ color: "text.main" }}>

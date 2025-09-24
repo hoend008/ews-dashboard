@@ -26,8 +26,8 @@ interface Props {
 
 export const DataProvider = ({ children }: Props) => {
 
-  const [contaminant, setContaminant] = useState("");
-  const [product, setProduct] = useState("");
+  const [contaminant, setContaminant] = useState("deoxynivalenol (don)");
+  const [product, setProduct] = useState("maize");
   const [feedconversionID, setFeedconversionID] = useState(0);
 
   // set state variable that holds country and function to update country

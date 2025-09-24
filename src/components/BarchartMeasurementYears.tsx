@@ -24,11 +24,11 @@ const BarchartMeasurementYears = () => {
   const { auth } = useAuth();
 
   // get country info
-  const { countryCode, product } = useData();
+  const { countryCode, product, contaminant } = useData();
 
   // get sample year data
   const { data, error, isPending } = useQuery(
-    createMeasurementYearQueryOptions(auth.accessToken, countryCode, product)
+    createMeasurementYearQueryOptions(auth.accessToken, countryCode, product, contaminant)
   );
 
   const { mode, accentColor } = useTheme();

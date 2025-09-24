@@ -41,18 +41,6 @@ const Sidebar = ({
       <ProductSelect />
       <ContaminantSelect />
       <Divider />
-      <List>
-        {["Button 1", "Button 2", "Button 3"].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ color: "text.main" }}>
-            <ListItemButton>
-              <ListItemIcon sx={{ color: "text.main" }}>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
     </Box>
   );
 

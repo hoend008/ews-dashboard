@@ -22,9 +22,6 @@ const TableCountries = () => {
     createMeasurementCountryQueryOptions(auth.accessToken, product, contaminant)
   );
 
-  const { mode, accentColor } = useTheme();
-  const themeColors = themeSettings(mode, accentColor);
-
   // define columns for datagrid
   const columns: GridColDef[] = [
     {
@@ -62,7 +59,6 @@ const TableCountries = () => {
   // functions and useStates to handle click events
   const handleRowClick: GridEventListener<"rowClick"> = (params: any) => {
     setSelectedRow(params.row);
-    console.log(params.row.iso_a3, " ", countryCode);
     if (params.row.iso_a3 == countryCode) {
       setCountryCode("");
     } else {
@@ -126,6 +122,10 @@ const TableCountries = () => {
             "& .MuiDataGrid-columnHeader": {
               backgroundColor: "secondary.main",
               fontSize: 16,
+            },
+            "& .MuiDataGrid-row:hover": {
+              color: "text.main",
+              backgroundColor: "grey",
             },
           }}
         />
