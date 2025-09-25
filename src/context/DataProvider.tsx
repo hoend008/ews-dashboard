@@ -8,6 +8,8 @@ import {
 } from "react";
 
 interface DataContextType {
+  feedFood: string;
+  setFeedFood: Dispatch<SetStateAction<string>>;
   contaminant: string;
   setContaminant: Dispatch<SetStateAction<string>>;
   product: string;
@@ -26,6 +28,7 @@ interface Props {
 
 export const DataProvider = ({ children }: Props) => {
 
+  const [feedFood, setFeedFood] = useState("food");
   const [contaminant, setContaminant] = useState("deoxynivalenol (don)");
   const [product, setProduct] = useState("maize");
   const [feedconversionID, setFeedconversionID] = useState(0);
@@ -40,6 +43,8 @@ export const DataProvider = ({ children }: Props) => {
   return (
     <DataContext.Provider
       value={{
+        feedFood,
+        setFeedFood,
         contaminant,
         setContaminant,
         product,

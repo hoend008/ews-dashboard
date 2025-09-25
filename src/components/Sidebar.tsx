@@ -14,6 +14,7 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import CountrySelect from "./CountrySelect";
 import ProductSelect from "./ProductSelect";
 import ContaminantSelect from "./ContaminantSelect";
+import FeedFoodSelect from "./FeedFoodSelect";
 
 export const drawerWidth = 240;
 
@@ -37,6 +38,7 @@ const Sidebar = ({
     <Box sx={{ bgcolor: "primary.main", height: "100dvh" }}>
       <Toolbar />
       <Divider />
+      <FeedFoodSelect />
       <CountrySelect />
       <ProductSelect />
       <ContaminantSelect />
