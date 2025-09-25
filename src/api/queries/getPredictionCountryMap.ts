@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export interface PredictionCountry {
+  country: string;
   iso_a3: string;
   density: number;
 }

@@ -1,6 +1,6 @@
 import { Box, Card, Divider, Grid, Toolbar, Typography } from "@mui/material";
 import { drawerWidth } from "../components/Layout";
-import MapGauge from "../components/MapGauge";
+import MapChart from "../components/MapChart";
 import PiechartSampleProducts from "../components/PiechartSampleProducts";
 import BarchartMeasurementYears from "../components/BarchartMeasurementYears";
 import ChartMixedMeasurementYearsCountExceeding from "../components/ChartMixedMeasurementYearsCountExceeding";
@@ -35,7 +35,7 @@ const Home = () => {
             </Typography>
         </Grid>
 
-        <MapGauge />
+        <MapChart />
 
         <Divider sx={{ borderBottomWidth: 3, bgcolor: "text.secondary" }} />
         <Typography variant="h3" align={'center'} sx={{ color: "text.main" }}>

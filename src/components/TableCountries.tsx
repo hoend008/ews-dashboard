@@ -5,10 +5,9 @@ import useAuth from "../hooks/useAuth";
 import useData from "../hooks/useData";
 import { useQuery } from "@tanstack/react-query";
 import createMeasurementCountryQueryOptions from "../api/queryOptions/measurementCountryQueryOptions";
-import { themeSettings } from "../themes/theme";
-import useTheme from "../hooks/useTheme";
 import { defaultDiv, extraDiv } from "../styles/pendingErrorDiv";
 import { MeasurementCountry } from "../api/queries/getMeasurementCountry";
+import titleCase from "../utils/titleCase";
 
 const TableCountries = () => {
   // get user authentication data
@@ -35,6 +34,9 @@ const TableCountries = () => {
       field: "country",
       headerName: "Country",
       width: 140,
+      valueGetter: (value, row) => {
+        return titleCase(value);
+      },
     },
     {
       field: "count",

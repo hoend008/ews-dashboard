@@ -10,19 +10,19 @@ import Legend from "./Legend";
 import MapInfoBox from "./MapInfoBox";
 import useData from "../../hooks/useData";
 import { CircularProgress, Typography } from "@mui/material";
-import { chartMainColor } from "../MapGauge";
+import { chartMainColor } from "../MapChart";
 import { mapPolygonColorToDensity } from "./ColorUtils";
 import { defaultDiv, extraDiv } from "../../styles/pendingErrorDiv";
 import createMapData from "../../hooks/useGeoDensityData";
 import geodata from "../../data/countries_WH.json";
-import { SampleCountry } from "../../api/queries/getSampleCountryMap";
+import { PredictionCountry } from "../../api/queries/getPredictionCountryMap";
 
 const COLOR_SELECT = "yellow";
 const WEIGHT_SELECT = 2;
 
 interface Props {
   //mapData: GeoJsonObject;
-  data: SampleCountry[];
+  data: PredictionCountry[];
   error: Error | null;
   isPending: boolean;
   isSuccess: boolean;

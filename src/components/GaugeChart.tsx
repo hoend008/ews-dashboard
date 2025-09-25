@@ -1,14 +1,14 @@
 import ReactSpeedometer, { Transition } from "react-d3-speedometer";
 import { Typography } from "@mui/material";
 import useData from "../hooks/useData";
-import { SampleCountry } from "../api/queries/getSampleCountryMap";
-import { chartMainColor } from "./MapGauge";
+import { PredictionCountry } from "../api/queries/getPredictionCountryMap";
+import { chartMainColor } from "./MapChart";
 import useTheme from "../hooks/useTheme";
 import { themeSettings } from "../themes/theme";
 import { defaultDiv, extraDiv } from "../styles/pendingErrorDiv";
 
 interface Props {
-  data: SampleCountry[];
+  data: PredictionCountry[];
   error: Error | null;
   isPending: boolean;
   isSuccess: boolean;

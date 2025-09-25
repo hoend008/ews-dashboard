@@ -8,6 +8,7 @@ import { themeSettings } from "../themes/theme";
 import { defaultDiv, extraDiv } from "../styles/pendingErrorDiv";
 import useData from "../hooks/useData";
 import createPredictionCountryMapQueryOptions from "../api/queryOptions/PredictionCountryMapQueryOptions";
+import TableModelPredictions from "./TableModelPredictions";
 
 export interface chartMainColor {
   color: string;
@@ -16,7 +17,7 @@ export interface chartMainColor {
   max: number;
 }
 
-const MapGauge = () => {
+const MapChart = () => {
   const { mode, accentColor } = useTheme();
   const mapColors = themeSettings(mode, accentColor).mapColors;
 
@@ -78,7 +79,7 @@ const MapGauge = () => {
           mapColors={mapColors}
         />
         <Box sx={{ margin: "auto" }}>
-          <GaugeChart
+          <TableModelPredictions
             //data={data.data}
             data={data}
             error={error}
@@ -92,4 +93,4 @@ const MapGauge = () => {
   );
 };
 
-export default MapGauge;
+export default MapChart;
