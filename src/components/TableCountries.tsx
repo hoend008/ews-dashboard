@@ -55,6 +55,9 @@ const TableCountries = () => {
       headerName: "% > LOQ",
       type: "number",
       width: 130,
+      valueGetter: (value, row) => {
+        return `${value}%`;
+      },
     },
   ];
 

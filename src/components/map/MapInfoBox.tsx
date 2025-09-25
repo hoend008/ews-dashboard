@@ -1,6 +1,5 @@
 import useTheme from "../../hooks/useTheme";
 import { themeSettings } from "../../themes/theme";
-import { chartMainColor } from "../MapGauge";
 import { mapPolygonColorToDensity } from "./ColorUtils";
 
 interface Props {
@@ -15,7 +14,7 @@ const MapInfoBox = ({ selectedFeature }: Props) => {
 
   return (
     <div className={"MapInfoBox"}>
-      <h2 style={{ margin: "0 0 5px" }}>Prediction</h2>
+      <h2 style={{ margin: "0 0 5px" }}>Model Prediction</h2>
       <div
         style={{
           display: "flex",

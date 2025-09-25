@@ -24,7 +24,7 @@ const Home = () => {
       <Toolbar />
       <Grid container direction="column" spacing={2}>
         <Typography variant="h3" align={'center'} sx={{ color: "text.main" }}>
-          Prediction Model
+          Model Predictions
         </Typography>
         <Grid size={{ xs: 12, md: 6 }}>
           <Typography variant="h4" sx={{ color: "text.main" }}>

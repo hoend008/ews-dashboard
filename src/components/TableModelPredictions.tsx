@@ -2,8 +2,11 @@ import { Box, Typography } from "@mui/material";
 import { PredictionCountry } from "../api/queries/getPredictionCountryMap";
 import { chartMainColor } from "./MapChart";
 import { defaultDiv, extraDiv } from "../styles/pendingErrorDiv";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridEventListener } from "@mui/x-data-grid";
 import titleCase from "../utils/titleCase";
+import { MeasurementCountry } from "../api/queries/getMeasurementCountry";
+import { useState } from "react";
+import useData from "../hooks/useData";
 
 interface Props {
   data: PredictionCountry[];
@@ -20,6 +23,9 @@ const TableModelPredictions = ({
   isSuccess,
   mapColors,
 }: Props) => {
+    // get country info
+  const { countryCode, setCountryCode } = useData();
+
   // define columns for datagrid
   const columns: GridColDef[] = [
     {
@@ -34,10 +40,25 @@ const TableModelPredictions = ({
       field: "density",
       headerName: "Model Prediction",
       type: "number",
-      width: 150,
+      width: 200,
+      valueGetter: (value, row) => {
+        return `${Math.round(value*100)}%`;
+      },
     },
   ];
 
+  // functions and useStates to handle click events
+    const handleRowClick: GridEventListener<"rowClick"> = (params: any) => {
+      setSelectedRow(params.row);
+      if (params.row.iso_a3 == countryCode) {
+        setCountryCode("");
+      } else {
+        setCountryCode(params.row.iso_a3);
+      }
+    };
+  
+    const [selectedRow, setSelectedRow] = useState<MeasurementCountry>();
+    
   if (error)
     return (
       <div style={{ ...defaultDiv, ...extraDiv }}>
@@ -71,7 +92,7 @@ const TableModelPredictions = ({
             noRowsVariant: "circular-progress",
           },
         }}
-        //onRowClick={handleRowClick}
+        onRowClick={handleRowClick}
         sx={{
           backgroundColor: "secondary.main",
           border: 1,
