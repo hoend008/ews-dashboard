@@ -69,7 +69,7 @@ const TableModelPredictions = ({
     );
 
   return (
-    <Box sx={{ width: "100%", height: "350px" }}>
+    <Box sx={{ width: "100%", height: 350 }}>
       <DataGrid
         rows={data}
         columns={columns}

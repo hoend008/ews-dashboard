@@ -10,7 +10,7 @@ const createMapData = (geodata: any, densityData: any) => {
       .indexOf(iso_a3);
 
     // if an index if found, update geodata.features
-    if (countryIndex > 0) {
+    if (countryIndex >= 0) {
       geodata.features[key].properties.density =
         densityData[countryIndex].density;
     } else {
