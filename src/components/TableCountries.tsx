@@ -8,8 +8,13 @@ import createMeasurementCountryQueryOptions from "../api/queryOptions/measuremen
 import { defaultDiv, extraDiv } from "../styles/pendingErrorDiv";
 import { MeasurementCountry } from "../api/queries/getMeasurementCountry";
 import titleCase from "../utils/titleCase";
+import useTheme from "../hooks/useTheme";
+import { themeSettings } from "../themes/theme";
 
 const TableCountries = () => {
+  const { mode, accentColor } = useTheme();
+  const themeColors = themeSettings(mode, accentColor);
+
   // get user authentication data
   const { auth } = useAuth();
 
@@ -131,6 +136,50 @@ const TableCountries = () => {
             "& .MuiDataGrid-row:hover": {
               color: "text.main",
               backgroundColor: "grey",
+            },
+            "& .MuiDataGrid-sortIcon": {
+              opacity: 1,
+              color: "text.main",
+            },
+            "& .MuiDataGrid-menuIconButton": {
+              opacity: 1,
+              color: "text.main",
+            },
+
+            "& ::-webkit-scrollbar": {
+              width: "12px",
+            },
+            "& ::-webkit-scrollbar-track": {
+              backgroundColor: themeColors.neutral.main,
+            },
+            "& ::-webkit-scrollbar-thumb": {
+              borderRadius: "8px",
+              boxShadow: "inset 0 0 6px rgba(0,0,0,.3)",
+              backgroundColor: themeColors.accent.main,
+            },
+            "& ::-webkit-scrollbar-button": {
+              borderStyle: "solid",
+              height: "12px",
+              width: "12px",
+            },
+
+            /* Up */
+            "& ::-webkit-scrollbar-button:vertical:decrement": {
+              borderWidth: "0 7px 12px 7px",
+              borderColor:
+                "transparent transparent " +
+                themeColors.neutral.light +
+                " transparent ",
+              backgroundColor: themeColors.neutral.main,
+            },
+
+            /* Up */
+            "& ::-webkit-scrollbar-button:vertical:increment": {
+              borderWidth: "12px 7px 0 7px",
+              borderColor:
+                themeColors.neutral.light +
+                " transparent transparent transparent",
+              backgroundColor: themeColors.neutral.main,
             },
           }}
         />

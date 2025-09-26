@@ -9,7 +9,7 @@ import TableCountries from "../components/TableCountries";
 import useData from "../hooks/useData";
 
 const Home = () => {
-  const { product, contaminant } = useData();
+  const { feedFood, product, contaminant } = useData();
    
   return (
     <Box
@@ -31,7 +31,7 @@ const Home = () => {
               Model Predictions World Map
             </Typography>
             <Typography sx={{ color: "text.secondary" }}>
-              Model Predictions per country for {product} and {contaminant}
+            Model Predictions per country for {feedFood.toUpperCase()} - {product} and {contaminant}
             </Typography>
         </Grid>
 
