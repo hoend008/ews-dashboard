@@ -26,11 +26,11 @@ const ChartMixedMeasurementYearsCountExceeding = () => {
   const { auth } = useAuth();
 
   // get country info
-  const { countryCode, product, contaminant } = useData();
+  const { feedFood, countryCode, product, contaminant } = useData();
 
   // get sample year data
   const { data, error, isPending } = useQuery(
-    createMeasurementYearQueryOptions(auth.accessToken, countryCode, product, contaminant)
+    createMeasurementYearQueryOptions(auth.accessToken, feedFood, countryCode, product, contaminant)
   );
   
   const { mode, accentColor } = useTheme();
@@ -102,7 +102,7 @@ const ChartMixedMeasurementYearsCountExceeding = () => {
           />
           <YAxis
             yAxisId="right"
-            dataKey="gtloq_perc"
+            dataKey="exceeding_mrl_perc"
             orientation="right"
             type="number"
             domain={[0, "auto"]}
@@ -128,7 +128,7 @@ const ChartMixedMeasurementYearsCountExceeding = () => {
           <Line
             yAxisId="right"
             type="monotone"
-            dataKey="gtloq_perc"
+            dataKey="exceeding_mrl_perc"
             stroke={themeColors.accent.secondary}
             fill={themeColors.accent.secondary}
           />

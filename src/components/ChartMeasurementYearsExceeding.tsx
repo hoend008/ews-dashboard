@@ -23,11 +23,11 @@ const ChartMeasurementYearsExceeding = () => {
   const { auth } = useAuth();
 
   // get country info
-  const { countryCode, product, contaminant } = useData();
+  const { feedFood, countryCode, product, contaminant } = useData();
 
   // get sample year data
   const { data, error, isPending } = useQuery(
-    createMeasurementYearQueryOptions(auth.accessToken, countryCode, product, contaminant)
+    createMeasurementYearQueryOptions(auth.accessToken, feedFood, countryCode, product, contaminant)
   );
   const { mode, accentColor } = useTheme();
   const themeColors = themeSettings(mode, accentColor);
@@ -93,7 +93,7 @@ const ChartMeasurementYearsExceeding = () => {
           <Tooltip />
           <Area
             type="monotone"
-            dataKey="gtloq_perc"
+            dataKey="exceeding_mrl_perc"
             stroke={themeColors.accent.main}
             fill={themeColors.accent.main}
           />

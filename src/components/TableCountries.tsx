@@ -19,11 +19,11 @@ const TableCountries = () => {
   const { auth } = useAuth();
 
   // get country info
-  const { product, countryCode, setCountryCode, contaminant } = useData();
+  const { feedFood, product, countryCode, setCountryCode, contaminant } = useData();
 
   // get sample year data
   const { data, error, isPending } = useQuery(
-    createMeasurementCountryQueryOptions(auth.accessToken, product, contaminant)
+    createMeasurementCountryQueryOptions(auth.accessToken, feedFood, product, contaminant)
   );
 
   // define columns for datagrid
@@ -50,14 +50,14 @@ const TableCountries = () => {
       width: 150,
     },
     {
-      field: "gtloq",
-      headerName: "> LOQ",
+      field: "exceeding_mrl",
+      headerName: "> MRL",
       type: "number",
       width: 110,
     },
     {
-      field: "gtloq_perc",
-      headerName: "% > LOQ",
+      field: "exceeding_mrl_perc",
+      headerName: "% > MRL",
       type: "number",
       width: 130,
       valueGetter: (value, row) => {

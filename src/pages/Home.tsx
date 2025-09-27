@@ -24,7 +24,7 @@ const Home = () => {
       <Toolbar />
       <Grid container direction="column" spacing={2}>
         <Typography variant="h3" align={'center'} sx={{ color: "text.main" }}>
-          Model Predictions
+          Model Predictions - {feedFood.toUpperCase()}
         </Typography>
         <Grid size={{ xs: 12, md: 6 }}>
           <Typography variant="h4" sx={{ color: "text.main" }}>
@@ -39,7 +39,7 @@ const Home = () => {
 
         <Divider sx={{ borderBottomWidth: 3, bgcolor: "text.secondary" }} />
         <Typography variant="h3" align={'center'} sx={{ color: "text.main" }}>
-          Data Descriptives
+          Data Descriptives - {feedFood.toUpperCase()}
         </Typography>
         <Grid container spacing={3}>
           <Grid size={{ xs: 12, md: 6 }}>

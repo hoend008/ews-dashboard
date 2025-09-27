@@ -3,13 +3,14 @@ import getMeasurementYear from "../queries/getMeasurementYear";
 
 export default function createMeasurementYearQueryOptions(
   accessToken: string,
+  feedFood: string,
   countryID: string,
   product: string,
   contaminant: string
 ) {
   return queryOptions({
-    queryKey: ["measurementyear", countryID, product, contaminant],
-    queryFn: () => getMeasurementYear(accessToken, countryID, product, contaminant),
+    queryKey: ["measurementyear", feedFood, countryID, product, contaminant],
+    queryFn: () => getMeasurementYear(accessToken, feedFood, countryID, product, contaminant),
     staleTime: 2 * 60 * 1000, // 2 minutes
   });
 }

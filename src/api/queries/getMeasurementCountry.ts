@@ -14,6 +14,7 @@ export interface MeasurementCountry {
 
 const getMeasurementCountry = async (
   accessToken: string,
+  feedFood: string,
   product: string,
   contaminant: string,
 ) => {
@@ -24,6 +25,7 @@ const getMeasurementCountry = async (
     signal: controller.signal,
     headers: { Authorization: "Bearer " + accessToken },
     params: {
+      feedfood: feedFood,
       product: product ? product : null,
       contaminant: contaminant ? contaminant : null,
     },

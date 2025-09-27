@@ -6,6 +6,7 @@ export interface MeasurementYear {
 
 const getMeasurementYear = async (
   accessToken: string,
+  feedFood: string,
   country_code: string,
   product: string,
   contaminant: string,  
@@ -17,6 +18,7 @@ const getMeasurementYear = async (
     signal: controller.signal,
     headers: { Authorization: "Bearer " + accessToken },
     params: {
+      feedfood: feedFood,
       iso_a3: country_code ? country_code : null,
       product: product ? product : null,
       contaminant: contaminant ? contaminant : null,
