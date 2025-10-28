@@ -44,10 +44,30 @@ const ContaminantSelect = () => {
         <InputLabel id="demo-simple-select-label">Contaminant</InputLabel>
         <Select
           MenuProps={{
+            PaperProps: {
+              sx: {
+                mt: 0,
+                pt: 0,
+                pb: 0,
+
+                "& .MuiMenu-list, & .MuiList-root": {
+                  pt: 0,
+                  pb: 0,
+                },
+
+                // optional: remove pseudo elements or shadows
+                "&::before, &::after": {
+                  display: "none",
+                },
+              },
+            },
             sx: {
               "&& .Mui-selected": {
                 color: "text.main",
                 background: themeColors.neutral.light,
+              },
+              "& .MuiMenuItem-root.Mui-selected:hover": {
+                backgroundColor: themeColors.accent.main,
               },
             },
           }}
@@ -68,7 +88,13 @@ const ContaminantSelect = () => {
             <MenuItem
               key={contaminant.contaminant}
               value={contaminant.contaminant}
-              sx={{ color: "text.main", backgroundColor: "secondary.main" }}
+              sx={{
+                color: "text.main",
+                backgroundColor: "secondary.main",
+                "&:hover": {
+                  backgroundColor: "neutral.light",
+                },
+              }}
             >
               {titleCase(contaminant.contaminant)}
             </MenuItem>

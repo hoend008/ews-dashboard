@@ -7,10 +7,14 @@ import ChartMixedMeasurementYearsCountExceeding from "../components/ChartMixedMe
 import ChartMeasurementYearsExceeding from "../components/ChartMeasurementYearsExceeding";
 import TableCountries from "../components/TableCountries";
 import useData from "../hooks/useData";
+import { themeSettings } from "../themes/theme";
+import useTheme from "../hooks/useTheme";
 
 const Home = () => {
   const { feedFood, product, contaminant } = useData();
-   
+  const { mode, handleChange, accentColor, handleAccentColor } = useTheme();
+  const themeColors = themeSettings(mode, accentColor);
+
   return (
     <Box
       sx={{
@@ -23,23 +27,44 @@ const Home = () => {
     >
       <Toolbar />
       <Grid container direction="column" spacing={2}>
-        <Typography variant="h3" align={'center'} sx={{ color: "text.main" }}>
-          Model Predictions - {feedFood.toUpperCase()}
+        <Typography
+          variant="h3"
+          align={"center"}
+          sx={{
+            color: "text.main",
+          }}
+        >
+          <span
+            style={{
+              borderBottom: "2px solid " + themeColors.text.secondary, // subtle underline
+              width: "fit-content",
+            }}
+          >
+            Model Predictions - {feedFood.toUpperCase()}
+          </span>
         </Typography>
         <Grid size={{ xs: 12, md: 6 }}>
           <Typography variant="h4" sx={{ color: "text.main" }}>
-              Model Predictions World Map
-            </Typography>
-            <Typography sx={{ color: "text.secondary" }}>
-            Model Predictions per country for {feedFood.toUpperCase()} - {product} and {contaminant}
-            </Typography>
+            Model Predictions World Map
+          </Typography>
+          <Typography sx={{ color: "text.secondary" }}>
+            Model Predictions per country for {feedFood.toUpperCase()} -{" "}
+            {product} and {contaminant}
+          </Typography>
         </Grid>
 
         <MapChart />
 
         <Divider sx={{ borderBottomWidth: 3, bgcolor: "text.secondary" }} />
-        <Typography variant="h3" align={'center'} sx={{ color: "text.main" }}>
-          Data Descriptives - {feedFood.toUpperCase()}
+        <Typography variant="h3" align={"center"} sx={{ color: "text.main" }}>
+          <span
+            style={{
+              borderBottom: "2px solid " + themeColors.text.secondary, // subtle underline
+              width: "fit-content",
+            }}
+          >
+            Data Descriptives - {feedFood.toUpperCase()}
+          </span>
         </Typography>
         <Grid container spacing={3}>
           <Grid size={{ xs: 12, md: 6 }}>

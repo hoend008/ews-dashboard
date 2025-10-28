@@ -22,9 +22,7 @@ const FeedFoodSelect = () => {
   const { auth } = useAuth();
 
   // get feed food
-  const { data } = useQuery(
-    createFeedFoodQueryOptions(auth.accessToken)
-  );
+  const { data } = useQuery(createFeedFoodQueryOptions(auth.accessToken));
 
   const { feedFood, setFeedFood } = useData();
 
@@ -43,10 +41,30 @@ const FeedFoodSelect = () => {
         <InputLabel id="demo-simple-select-label">Feed / Food</InputLabel>
         <Select
           MenuProps={{
+            PaperProps: {
+              sx: {
+                mt: 0,
+                pt: 0,
+                pb: 0,
+
+                "& .MuiMenu-list, & .MuiList-root": {
+                  pt: 0,
+                  pb: 0,
+                },
+
+                // optional: remove pseudo elements or shadows
+                "&::before, &::after": {
+                  display: "none",
+                },
+              },
+            },
             sx: {
               "&& .Mui-selected": {
                 color: "text.main",
                 background: themeColors.neutral.light,
+              },
+              "& .MuiMenuItem-root.Mui-selected:hover": {
+                backgroundColor: themeColors.accent.main,
               },
             },
           }}
@@ -67,7 +85,13 @@ const FeedFoodSelect = () => {
             <MenuItem
               key={data.feedfood}
               value={data.feedfood}
-              sx={{ color: "text.main", backgroundColor: "secondary.main" }}
+              sx={{
+                color: "text.main",
+                backgroundColor: "secondary.main",
+                "&:hover": {
+                  backgroundColor: "neutral.light",
+                },
+              }}
             >
               {titleCase(data.feedfood)}
             </MenuItem>

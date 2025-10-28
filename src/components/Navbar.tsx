@@ -41,8 +41,10 @@ const Navbar = ({ handleDrawerToggle }: Props) => {
   return (
     <AppBar
       position="fixed"
+      elevation={0}
       sx={{
         zIndex: (theme) => theme.zIndex.drawer + 1,
+        borderBottom: "1px solid " + themeColors.neutral.main,
       }}
     >
       <Toolbar sx={{ justifyContent: "space-between" }}>
@@ -65,7 +67,7 @@ const Navbar = ({ handleDrawerToggle }: Props) => {
           </IconButton>
         </Box>
         <Typography variant="h4" sx={{ color: "text.main" }}>
-          EWS Mycotoxin Dashboard 
+          EWS Mycotoxin Dashboard
         </Typography>
         <Box sx={{ display: "flex" }}>
           <IconButton onClick={handleChange}>

@@ -43,10 +43,30 @@ const ProductSelect = () => {
         <InputLabel id="demo-simple-select-label">Product</InputLabel>
         <Select
           MenuProps={{
+            PaperProps: {
+              sx: {
+                mt: 0,
+                pt: 0,
+                pb: 0,
+
+                "& .MuiMenu-list, & .MuiList-root": {
+                  pt: 0,
+                  pb: 0,
+                },
+
+                // optional: remove pseudo elements or shadows
+                "&::before, &::after": {
+                  display: "none",
+                },
+              },
+            },
             sx: {
               "&& .Mui-selected": {
                 color: "text.main",
                 background: themeColors.neutral.light,
+              },
+              "& .MuiMenuItem-root.Mui-selected:hover": {
+                backgroundColor: themeColors.accent.main,
               },
             },
           }}
@@ -67,7 +87,13 @@ const ProductSelect = () => {
             <MenuItem
               key={product.product}
               value={product.product}
-              sx={{ color: "text.main", backgroundColor: "secondary.main" }}
+              sx={{
+                color: "text.main",
+                backgroundColor: "secondary.main",
+                "&:hover": {
+                  backgroundColor: "neutral.light",
+                },
+              }}
             >
               {titleCase(product.product)}
             </MenuItem>
