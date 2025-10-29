@@ -108,10 +108,10 @@ const Home = () => {
         <Grid container spacing={3}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography variant="h4" sx={{ color: "text.main" }}>
-              Measurements per year
+              Samples: Top 3 products
             </Typography>
             <Typography sx={{ color: "text.secondary" }}>
-              Number of measurements per year
+              The top 3 products based on the number of samples
             </Typography>
             <Card
               sx={{
@@ -121,7 +121,7 @@ const Home = () => {
                 borderRadius: "0.6rem",
               }}
             >
-              <BarchartMeasurementYears />
+              <PiechartSampleProducts />
             </Card>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
@@ -148,10 +148,10 @@ const Home = () => {
         <Grid container spacing={3}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography variant="h4" sx={{ color: "text.main" }}>
-              Samples: Top 3 products
+              Measurements per year
             </Typography>
             <Typography sx={{ color: "text.secondary" }}>
-              The top 3 products based on the number of samples
+              Number of measurements per year
             </Typography>
             <Card
               sx={{
@@ -161,7 +161,7 @@ const Home = () => {
                 borderRadius: "0.6rem",
               }}
             >
-              <PiechartSampleProducts />
+              <BarchartMeasurementYears />
             </Card>
           </Grid>
         </Grid>

@@ -9,6 +9,7 @@ import { useState } from "react";
 import usePrevious from "react-use-previous";
 import createSampleProductQueryOptions from "../api/queryOptions/sampleProductQueryOptions";
 import { defaultDiv, extraDiv } from "../styles/pendingErrorDiv";
+import { capitalizeFirstLetter } from "../utils/titleCase";
 
 const PiechartSampleProducts = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -44,10 +45,6 @@ const PiechartSampleProducts = () => {
       </div>
     );
 
-  const renderLabel = (entry: any) => {
-    return entry.name;
-  };
-
   const handleClick = (data: any, index: any) => {
     if (index === previousIndex.current) {
       setActiveIndex(-1);
@@ -70,7 +67,7 @@ const PiechartSampleProducts = () => {
           cy="50%"
           outerRadius={80}
           fill={themeColors.accent.main}
-          label={renderLabel}
+          label={({ name }) => capitalizeFirstLetter(name)}
           onClick={handleClick}
         >
           {data.map((entry, index) => (

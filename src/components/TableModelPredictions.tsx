@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Modal, Typography } from "@mui/material";
 import { PredictionCountry } from "../api/queries/getPredictionCountryMap";
 import { chartMainColor } from "./MapChart";
 import { defaultDiv, extraDiv } from "../styles/pendingErrorDiv";
@@ -9,6 +9,18 @@ import { useState } from "react";
 import useData from "../hooks/useData";
 import useTheme from "../hooks/useTheme";
 import { themeSettings } from "../themes/theme";
+import { Bar, BarChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts";
+import ChartMixedMeasurementYearsCountExceeding from "./ChartMixedMeasurementYearsCountExceeding";
+
+const barData = [
+  { year: "2018", measurements: 20 },
+  { year: "2019", measurements: 35 },
+  { year: "2020", measurements: 50 },
+  { year: "2021", measurements: 40 },
+  { year: "2022", measurements: 60 },
+  { year: "2023", measurements: 70 },
+  { year: "2024", measurements: 55 },
+];
 
 interface Props {
   data: PredictionCountry[];
@@ -60,9 +72,17 @@ const TableModelPredictions = ({
     } else {
       setCountryCode(params.row.iso_a3);
     }
+    setOpen(true);
   };
 
+  // select rows and open modal
   const [selectedRow, setSelectedRow] = useState<MeasurementCountry>();
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+    //setSelectedRow(null);
+  };
 
   if (error)
     return (
@@ -162,6 +182,39 @@ const TableModelPredictions = ({
           },
         }}
       />
+
+      <Modal open={open} onClose={handleClose}>
+        <Box
+          sx={{
+            position: "absolute" as const,
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 500,
+            bgcolor: "secondary.main",
+            color: "text.main",
+            border: "1px solid " + themeColors.accent.main,
+            borderRadius: 2,
+            boxShadow: 24,
+            p: 4,
+          }}
+        >
+          <Typography
+            id="modal-title"
+            variant="h4"
+            component="h2"
+            gutterBottom
+            sx={{ textTransform: "capitalize" }}
+          >
+            {selectedRow
+              ? `Details for ${
+                  data.find((c) => c.iso_a3 === selectedRow.iso_a3)?.country
+                }`
+              : "Details"}
+          </Typography>
+          <ChartMixedMeasurementYearsCountExceeding />
+        </Box>
+      </Modal>
     </Box>
   );
 };
