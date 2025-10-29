@@ -126,7 +126,7 @@ const Home = () => {
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography variant="h4" sx={{ color: "text.main" }}>
-              Measurements: % Greater than LOQ
+              Measurements: % &gt; LOQ
             </Typography>
             <Typography sx={{ color: "text.secondary" }}>
               Percentage of measurements with concentrations greater than LOQ

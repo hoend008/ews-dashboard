@@ -28,7 +28,13 @@ const BarchartMeasurementYears = () => {
 
   // get sample year data
   const { data, error, isPending } = useQuery(
-    createMeasurementYearQueryOptions(auth.accessToken, feedFood, countryCode, product, contaminant)
+    createMeasurementYearQueryOptions(
+      auth.accessToken,
+      feedFood,
+      countryCode,
+      product,
+      contaminant
+    )
   );
 
   const { mode, accentColor } = useTheme();
@@ -92,8 +98,26 @@ const BarchartMeasurementYears = () => {
               return tick.toLocaleString();
             }}
           />
-          <Tooltip />
-          <Bar dataKey="count" onClick={handleClick}>
+          <Tooltip
+            contentStyle={{
+              fontSize: "18px",
+              borderRadius: "10px",
+              backgroundColor: themeColors.secondary.main,
+              border: "1px solid " + themeColors.accent.main,
+              color: themeColors.text.secondary,
+              opacity: 0.92,
+            }}
+            labelStyle={{
+              fontWeight: "bold",
+              fontSize: "20px",
+            }}
+          />
+          <Bar
+            name="Nr Measurements"
+            dataKey="count"
+            onClick={handleClick}
+            fill={themeColors.accent.main}
+          >
             {data.map((entry, index) => (
               <Cell
                 cursor="pointer"

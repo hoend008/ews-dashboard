@@ -82,7 +82,27 @@ const PiechartSampleProducts = () => {
             />
           ))}
         </Pie>
-        <Tooltip />
+        <Tooltip
+          formatter={(value: number, name: string) => [
+            value.toLocaleString(), // 👈 adds thousand separators based on locale
+            name.charAt(0).toUpperCase() + name.slice(1), // capitalize first letter
+          ]}
+          contentStyle={{
+            fontSize: "18px",
+            borderRadius: "10px",
+            backgroundColor: themeColors.secondary.main,
+            border: "1px solid " + themeColors.accent.main,
+            color: themeColors.text.secondary,
+            opacity: 0.92,
+          }}
+          itemStyle={{
+            color: themeColors.accent.main,
+          }}
+          labelStyle={{
+            fontWeight: "bold",
+            fontSize: "20px",
+          }}
+        />
       </PieChart>
     </ResponsiveContainer>
   );

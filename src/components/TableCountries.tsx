@@ -19,11 +19,17 @@ const TableCountries = () => {
   const { auth } = useAuth();
 
   // get country info
-  const { feedFood, product, countryCode, setCountryCode, contaminant } = useData();
+  const { feedFood, product, countryCode, setCountryCode, contaminant } =
+    useData();
 
   // get sample year data
   const { data, error, isPending } = useQuery(
-    createMeasurementCountryQueryOptions(auth.accessToken, feedFood, product, contaminant)
+    createMeasurementCountryQueryOptions(
+      auth.accessToken,
+      feedFood,
+      product,
+      contaminant
+    )
   );
 
   // define columns for datagrid
@@ -98,6 +104,7 @@ const TableCountries = () => {
     return (
       <Box sx={{ width: "100%", height: 300 }}>
         <DataGrid
+          disableColumnResize={true}
           rows={data}
           columns={columns}
           hideFooter

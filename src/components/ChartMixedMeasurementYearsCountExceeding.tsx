@@ -6,8 +6,6 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  AreaChart,
-  Area,
   ComposedChart,
   Bar,
   Line,
@@ -30,9 +28,15 @@ const ChartMixedMeasurementYearsCountExceeding = () => {
 
   // get sample year data
   const { data, error, isPending } = useQuery(
-    createMeasurementYearQueryOptions(auth.accessToken, feedFood, countryCode, product, contaminant)
+    createMeasurementYearQueryOptions(
+      auth.accessToken,
+      feedFood,
+      countryCode,
+      product,
+      contaminant
+    )
   );
-  
+
   const { mode, accentColor } = useTheme();
   const themeColors = themeSettings(mode, accentColor);
 
@@ -118,14 +122,36 @@ const ChartMixedMeasurementYearsCountExceeding = () => {
             }}
           />
 
-          <Tooltip />
+          <Tooltip
+            formatter={(value: number, name: string) => {
+              // 👇 Check which series this tooltip item belongs to
+              if (name === "% Measurements > LOQ") {
+                return [`${value}%`, name];
+              }
+              if (name === "Nr measurements") {
+                return [value, name];
+              }
+              return [value, name];
+            }}
+            contentStyle={{
+              fontSize: "18px",
+              borderRadius: "10px",
+              backgroundColor: themeColors.secondary.main,
+              border: "1px solid " + themeColors.accent.main,
+              color: themeColors.text.secondary,
+              opacity: 0.92,
+            }}
+            labelStyle={{ fontWeight: "bold", fontSize: "20px" }}
+          />
           <Bar
+            name="Nr measurements"
             yAxisId="left"
             dataKey="count"
             barSize={20}
             fill={themeColors.accent.main}
           />
           <Line
+            name="% Measurements > LOQ"
             yAxisId="right"
             type="monotone"
             dataKey="exceeding_mrl_perc"

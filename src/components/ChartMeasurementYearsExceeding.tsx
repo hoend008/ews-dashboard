@@ -27,7 +27,13 @@ const ChartMeasurementYearsExceeding = () => {
 
   // get sample year data
   const { data, error, isPending } = useQuery(
-    createMeasurementYearQueryOptions(auth.accessToken, feedFood, countryCode, product, contaminant)
+    createMeasurementYearQueryOptions(
+      auth.accessToken,
+      feedFood,
+      countryCode,
+      product,
+      contaminant
+    )
   );
   const { mode, accentColor } = useTheme();
   const themeColors = themeSettings(mode, accentColor);
@@ -90,8 +96,23 @@ const ChartMeasurementYearsExceeding = () => {
               return `${tick}%`;
             }}
           />
-          <Tooltip />
+          <Tooltip
+            formatter={(value: number) => `${value}%`}
+            contentStyle={{
+              fontSize: "18px",
+              borderRadius: "10px",
+              backgroundColor: themeColors.secondary.main,
+              border: "1px solid " + themeColors.accent.main,
+              color: themeColors.text.secondary,
+              opacity: 0.92,
+            }}
+            labelStyle={{
+              fontWeight: "bold",
+              fontSize: "20px",
+            }}
+          />
           <Area
+            name="% Measurements > LOQ"
             type="monotone"
             dataKey="exceeding_mrl_perc"
             stroke={themeColors.accent.main}
