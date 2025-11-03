@@ -73,7 +73,12 @@ const TableCountries = () => {
   ];
 
   // functions and useStates to handle click events
+  const [selectedRowId, setSelectedRowId] = useState<number | null>(null);
+
   const handleRowClick: GridEventListener<"rowClick"> = (params: any) => {
+    setSelectedRowId((prev) =>
+      prev === params.id ? null : (params.id as number)
+    );
     setSelectedRow(params.row);
     if (params.row.iso_a3 == countryCode) {
       setCountryCode("");
@@ -104,6 +109,9 @@ const TableCountries = () => {
     return (
       <Box sx={{ width: "100%", height: 300 }}>
         <DataGrid
+          getRowClassName={(params) =>
+            params.id === selectedRowId ? "my-selected-row" : ""
+          }
           disableColumnResize={true}
           rows={data}
           columns={columns}
@@ -133,6 +141,9 @@ const TableCountries = () => {
             borderColor: "border.main",
             borderRadius: "0.6rem",
             color: "text.main",
+            "& .MuiDataGrid-row": {
+              transition: "background-color 0.3s ease",
+            },
             "& .MuiDataGrid-cell:focus-within": {
               outline: "none !important",
             },
@@ -144,6 +155,11 @@ const TableCountries = () => {
               color: "text.main",
               backgroundColor: "grey",
             },
+
+            "& .my-selected-row": {
+              backgroundColor: themeColors.accent.main,
+            },
+
             "& .MuiDataGrid-sortIcon": {
               opacity: 1,
               color: "text.main",

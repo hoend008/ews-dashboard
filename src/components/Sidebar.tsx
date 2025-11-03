@@ -1,20 +1,9 @@
-import {
-  Box,
-  Drawer,
-  Divider,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Toolbar,
-} from "@mui/material";
-import MailIcon from "@mui/icons-material/Mail";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
+import { Box, Drawer, Divider, Toolbar } from "@mui/material";
 import CountrySelect from "./CountrySelect";
 import ProductSelect from "./ProductSelect";
 import ContaminantSelect from "./ContaminantSelect";
 import FeedFoodSelect from "./FeedFoodSelect";
+import { motion } from "framer-motion";
 
 export const drawerWidth = 240;
 
@@ -38,10 +27,16 @@ const Sidebar = ({
     <Box sx={{ bgcolor: "primary.main", height: "100dvh" }}>
       <Toolbar />
       <Divider />
-      <FeedFoodSelect />
-      <CountrySelect />
-      <ProductSelect />
-      <ContaminantSelect />
+      <motion.div
+        initial={{ opacity: 0, x: -100 }} // start off-screen right
+        animate={{ opacity: 1, x: 0 }} // slide to normal position
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <FeedFoodSelect />
+        <CountrySelect />
+        <ProductSelect />
+        <ContaminantSelect />
+      </motion.div>
       <Divider />
     </Box>
   );

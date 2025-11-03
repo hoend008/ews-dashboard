@@ -9,6 +9,7 @@ import TableCountries from "../components/TableCountries";
 import useData from "../hooks/useData";
 import { themeSettings } from "../themes/theme";
 import useTheme from "../hooks/useTheme";
+import { motion } from "framer-motion";
 
 const Home = () => {
   const { feedFood, product, contaminant } = useData();
@@ -66,105 +67,130 @@ const Home = () => {
             Data Descriptives - {feedFood.toUpperCase()}
           </span>
         </Typography>
-        <Grid container spacing={3}>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Typography variant="h4" sx={{ color: "text.main" }}>
-              Measurements per year
-            </Typography>
-            <Typography sx={{ color: "text.secondary" }}>
-              Number of measurements per year
-            </Typography>
-            <Card
-              sx={{
-                backgroundColor: "secondary.main",
-                border: 1,
-                borderColor: "border.main",
-                borderRadius: "0.6rem",
-              }}
-            >
-              <ChartMixedMeasurementYearsCountExceeding />
-            </Card>
-          </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Typography variant="h4" sx={{ color: "text.main" }}>
-              Countries
-            </Typography>
-            <Typography sx={{ color: "text.secondary" }}>
-              Countries ranked by percentage of measurements exceeding the LOQ
-            </Typography>
-            <Card
-              sx={{
-                backgroundColor: "secondary.main",
-                border: 1,
-                borderColor: "border.main",
-                borderRadius: "0.6rem",
-              }}
-            >
-              <TableCountries />
-            </Card>
-          </Grid>
-        </Grid>
 
-        <Grid container spacing={3}>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Typography variant="h4" sx={{ color: "text.main" }}>
-              Samples: Top 3 products
-            </Typography>
-            <Typography sx={{ color: "text.secondary" }}>
-              The top 3 products based on the number of samples
-            </Typography>
-            <Card
-              sx={{
-                backgroundColor: "secondary.main",
-                border: 1,
-                borderColor: "border.main",
-                borderRadius: "0.6rem",
-              }}
-            >
-              <PiechartSampleProducts />
-            </Card>
+        <motion.div
+          initial={{ opacity: 0, y: 0 }} // start off-screen to the left
+          whileInView={{ opacity: 1, y: 0 }} // slide into place
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }} // trigger when 30% visible
+          style={{ overflow: "hidden" }} // ensures smooth clipping
+        >
+          <Grid container spacing={3}>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Typography variant="h4" sx={{ color: "text.main" }}>
+                Measurements per year
+              </Typography>
+              <Typography sx={{ color: "text.secondary" }}>
+                Number of measurements per year
+              </Typography>
+              <Card
+                sx={{
+                  backgroundColor: "secondary.main",
+                  border: 1,
+                  borderColor: "border.main",
+                  borderRadius: "0.6rem",
+                }}
+              >
+                <ChartMixedMeasurementYearsCountExceeding />
+              </Card>
+            </Grid>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Typography variant="h4" sx={{ color: "text.main" }}>
+                Countries
+              </Typography>
+              <Typography sx={{ color: "text.secondary" }}>
+                Countries ranked by percentage of measurements exceeding the LOQ
+              </Typography>
+              <Card
+                sx={{
+                  backgroundColor: "secondary.main",
+                  border: 1,
+                  borderColor: "border.main",
+                  borderRadius: "0.6rem",
+                }}
+              >
+                <TableCountries />
+              </Card>
+            </Grid>
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Typography variant="h4" sx={{ color: "text.main" }}>
-              Measurements: % &gt; LOQ
-            </Typography>
-            <Typography sx={{ color: "text.secondary" }}>
-              Percentage of measurements with concentrations greater than LOQ
-              per year
-            </Typography>
-            <Card
-              sx={{
-                backgroundColor: "secondary.main",
-                border: 1,
-                borderColor: "border.main",
-                borderRadius: "0.6rem",
-              }}
-            >
-              <ChartMeasurementYearsExceeding />
-            </Card>
-          </Grid>
-        </Grid>
+        </motion.div>
 
-        <Grid container spacing={3}>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Typography variant="h4" sx={{ color: "text.main" }}>
-              Measurements per year
-            </Typography>
-            <Typography sx={{ color: "text.secondary" }}>
-              Number of measurements per year
-            </Typography>
-            <Card
-              sx={{
-                backgroundColor: "secondary.main",
-                border: 1,
-                borderColor: "border.main",
-                borderRadius: "0.6rem",
-              }}
-            >
-              <BarchartMeasurementYears />
-            </Card>
+        <motion.div
+          initial={{ opacity: 0, x: -100 }} // start off-screen to the left
+          whileInView={{ opacity: 1, x: 0 }} // slide into place
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }} // trigger when 30% visible
+          style={{ overflow: "hidden" }} // ensures smooth clipping
+        >
+          <Grid container spacing={3}>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Typography variant="h4" sx={{ color: "text.main" }}>
+                Samples: Top 3 products
+              </Typography>
+              <Typography sx={{ color: "text.secondary" }}>
+                The top 3 products based on the number of samples
+              </Typography>
+              <Card
+                sx={{
+                  backgroundColor: "secondary.main",
+                  border: 1,
+                  borderColor: "border.main",
+                  borderRadius: "0.6rem",
+                }}
+              >
+                <PiechartSampleProducts />
+              </Card>
+            </Grid>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Typography variant="h4" sx={{ color: "text.main" }}>
+                Measurements: % &gt; LOQ
+              </Typography>
+              <Typography sx={{ color: "text.secondary" }}>
+                Percentage of measurements with concentrations greater than LOQ
+                per year
+              </Typography>
+              <Card
+                sx={{
+                  backgroundColor: "secondary.main",
+                  border: 1,
+                  borderColor: "border.main",
+                  borderRadius: "0.6rem",
+                }}
+              >
+                <ChartMeasurementYearsExceeding />
+              </Card>
+            </Grid>
           </Grid>
-        </Grid>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 100 }} // start off-screen to the left
+          whileInView={{ opacity: 1, y: 0 }} // slide into place
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }} // trigger when 30% visible
+          style={{ overflow: "hidden" }} // ensures smooth clipping
+        >
+          <Grid container spacing={3}>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Typography variant="h4" sx={{ color: "text.main" }}>
+                Measurements per year
+              </Typography>
+              <Typography sx={{ color: "text.secondary" }}>
+                Number of measurements per year
+              </Typography>
+              <Card
+                sx={{
+                  backgroundColor: "secondary.main",
+                  border: 1,
+                  borderColor: "border.main",
+                  borderRadius: "0.6rem",
+                }}
+              >
+                <BarchartMeasurementYears />
+              </Card>
+            </Grid>
+          </Grid>
+        </motion.div>
       </Grid>
     </Box>
   );
