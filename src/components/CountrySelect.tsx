@@ -47,6 +47,30 @@ const CountrySelect = () => {
           MenuProps={{
             PaperProps: {
               sx: {
+                "& .MuiMenuItem-root": {
+                  color: "text.main",
+                  backgroundColor: "primary.main", // default bg
+                  "&:hover": {
+                    // hover effect
+                    backgroundColor: "neutral.light",
+                  },
+                },
+                "& .MuiMenuItem-root.Mui-selected": {
+                  backgroundColor: themeColors.accent.main, // selected bg
+                  color: "text.main",
+                  "&:hover": {
+                    // hover effect
+                    backgroundColor: "neutral.light",
+                  },
+                },
+                "& .MuiMenuItem-root.Mui-focusVisible": {
+                  backgroundColor: "secondary.main", // focused item bg
+                  color: "text.main",
+                  "&:hover": {
+                    // hover effect
+                    backgroundColor: "neutral.light",
+                  },
+                },
                 mt: 0,
                 pt: 0,
                 pb: 0,
@@ -77,6 +101,9 @@ const CountrySelect = () => {
             backgroundColor: "secondary.main",
             ".MuiOutlinedInput-notchedOutline": {
               borderColor: themeColors.accent.main,
+            },
+            "& .MuiSelect-icon": {
+              color: themeColors.accent.main,
             },
           }}
           labelId="demo-simple-select-label"

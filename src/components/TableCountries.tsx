@@ -186,7 +186,7 @@ const TableCountries = () => {
               width: "12px",
             },
 
-            /* Up */
+            /* DOWN */
             "& ::-webkit-scrollbar-button:vertical:decrement": {
               borderWidth: "0 7px 12px 7px",
               borderColor:
