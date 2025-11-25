@@ -57,13 +57,13 @@ const TableCountries = () => {
     },
     {
       field: "exceeding_mrl",
-      headerName: "> MRL",
+      headerName: "> LOQ",
       type: "number",
       width: 110,
     },
     {
       field: "exceeding_mrl_perc",
-      headerName: "% > MRL",
+      headerName: "% > LOQ",
       type: "number",
       width: 130,
       valueGetter: (value, row) => {

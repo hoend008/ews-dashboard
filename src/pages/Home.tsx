@@ -41,15 +41,15 @@ const Home = () => {
               width: "fit-content",
             }}
           >
-            Model Predictions - {feedFood.toUpperCase()}
+            Model Predictions for 2023 - {feedFood.toUpperCase()}
           </span>
         </Typography>
         <Grid size={{ xs: 12, md: 6 }}>
           <Typography variant="h4" sx={{ color: "text.main" }}>
-            Model Predictions World Map
+            Model Predictions for 2023 World Map
           </Typography>
           <Typography sx={{ color: "text.secondary" }}>
-            Model Predictions per country for {feedFood.toUpperCase()} -{" "}
+            Model Predictions per country for 2023 {feedFood.toUpperCase()} -{" "}
             {product} and {contaminant}
           </Typography>
         </Grid>
