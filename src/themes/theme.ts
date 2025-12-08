@@ -163,10 +163,10 @@ export const themeSettings = (mode: boolean, themeColor: string) => {
   return mode
     ? {
         primary: {
-          main: "#0a0a0a", //colors.primary[100],
+          main: "#121212", //colors.primary[100],
         },
         secondary: {
-          main: "#171717",
+          main: "#1E1E1E",
           //main: colors.greenAccent[300],
         },
         accent: {
@@ -184,7 +184,7 @@ export const themeSettings = (mode: boolean, themeColor: string) => {
           //paper: colors.grey[300],
         },
         text: {
-          main: "#e5e5e5",
+          main: "#DADADA",
           secondary: "#a1a1a1",
         },
         border: {
@@ -196,12 +196,12 @@ export const themeSettings = (mode: boolean, themeColor: string) => {
       }
     : {
         primary: {
-          //main: colors.primary[500],
+          //main: colors.primary[500], FAFAFA  
           main: "#F2F3F4",
         },
         secondary: {
           //main: colors.greenAccent[100],
-          main: "#F2F3F4",
+          main: "#F5F7FA",
         },
         accent: {
           main: themeColor == "green" ? AccentMain : AccentSecondary,
@@ -217,7 +217,7 @@ export const themeSettings = (mode: boolean, themeColor: string) => {
           //paper: colors.grey[100],
         },
         text: {
-          main: "#0a0a0a",
+          main: "#1F2933",
           secondary: "#737373",
         },
         border: {

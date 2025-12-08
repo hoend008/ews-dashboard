@@ -56,7 +56,7 @@ const Home = () => {
 
         <MapChart />
 
-        <Divider sx={{ borderBottomWidth: 3, bgcolor: "text.secondary" }} />
+        <Divider sx={{ borderBottomWidth: 2, bgcolor: "text.secondary" }} />
         <Typography variant="h3" align={"center"} sx={{ color: "text.main" }}>
           <span
             style={{
