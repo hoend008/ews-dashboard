@@ -1,4 +1,14 @@
-import { Box, Card, Divider, Grid, Toolbar, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  Divider,
+  Grid,
+  IconButton,
+  Stack,
+  Toolbar,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import { drawerWidth } from "../components/Layout";
 import MapChart from "../components/MapChart";
 import PiechartSampleProducts from "../components/PiechartSampleProducts";
@@ -10,6 +20,7 @@ import useData from "../hooks/useData";
 import { themeSettings } from "../themes/theme";
 import useTheme from "../hooks/useTheme";
 import { motion } from "framer-motion";
+import InfoIcon from "@mui/icons-material/Info";
 
 const Home = () => {
   const { feedFood, product, contaminant } = useData();
@@ -45,9 +56,26 @@ const Home = () => {
           </span>
         </Typography>
         <Grid size={{ xs: 12, md: 6 }}>
-          <Typography variant="h4" sx={{ color: "text.main" }}>
-            Model Predictions for 2023 World Map
-          </Typography>
+          <Stack direction="row">
+            <Typography variant="h4" sx={{ color: "text.main" }}>
+              Model Country Predictions for 2023
+            </Typography>
+            <Tooltip
+              title={
+                <h2 style={{ fontSize: "20px" }}>
+                  This value represents the model-predicted probability that the
+                  selected cereal–mycotoxin combination in the chosen country
+                  and year exceeds the defined contamination threshold. A higher
+                  probability indicates a higher likelihood of unsafe or
+                  elevated contamination levels.
+                </h2>
+              }
+            >
+              <IconButton>
+                <InfoIcon sx={{ color: themeColors.accent.main }} />
+              </IconButton>
+            </Tooltip>
+          </Stack>
           <Typography sx={{ color: "text.secondary" }}>
             Model Predictions per country for 2023 {feedFood.toUpperCase()} -{" "}
             {product} and {contaminant}
